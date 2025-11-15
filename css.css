@@ -1,0 +1,707 @@
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #91f79a, #838383); 
+  color: #222;
+  scroll-behavior: smooth;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+/* Floating animation for the text (used on 'Mahek' title) */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+/* Sparkles animation */
+@keyframes sparkle-move {
+  0%   { transform: translate(0,0) scale(0.5); opacity: 1; }
+  50%  { transform: translate(10px,-10px) scale(1); opacity: 0.8; }
+  100% { transform: translate(0,0) scale(0.5); opacity: 1; }
+}
+
+
+
+
+/* Floating Mahek text */
+.pacifico-regular {
+  font-family: "Pacifico", cursive;
+  font-size: 66px;
+  font-weight: 400;
+  display: inline-block;
+  color: #ff70a6;
+  position: relative;
+  animation: float 3s ease-in-out infinite;
+  text-align: center;
+}
+
+/* Sparkles using pseudo-elements */
+.pacifico-regular::before,
+.pacifico-regular::after {
+  content: '💗ྀ';
+  position: absolute;
+  font-size: 1.2rem;
+  color: #ff9ce3;
+  opacity: 0.8;
+  animation: sparkle-move 2s ease-in-out infinite;
+}
+
+.pacifico-regular::before {
+  top: -20px;
+  left: -20px;
+  animation-delay: 0s;
+}
+
+.pacifico-regular::after {
+  top: 10px;
+  right: -15px;
+  animation-delay: 1s;
+}
+
+
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 16px;
+}
+::-webkit-scrollbar-corner {
+  border-top: 1px solid #dab7d2;
+  border-left: 1px solid #ffb4b4;
+}
+::-webkit-scrollbar-thumb {
+  width: 14px;
+  box-shadow: inset -1px -1px 0 #343463, inset 1px 1px 0 #cdcdfc;
+  background-image: url('https://via.placeholder.com/16');
+  background-color: #f8f5f7;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+::-webkit-scrollbar-track {
+  background: radial-gradient(circle at 0.5px 0.5px,#787877 0.5px,transparent 0) 0/4px 2px repeat,
+              radial-gradient(circle at 2.5px 1.5px,#787877 0.5px,transparent 0) 0/4px 2px repeat,
+              #dedede;
+  border: 1px solid #000000;
+}
+
+/* Fixed Futuristic Top Navbar */
+.navbar {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 25px;
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(12px);
+  border-radius: 40px;
+  padding: 10px 20px;
+  box-shadow: 0 0 20px rgba(255, 180, 255, 0.4);
+  z-index: 1000;
+}
+
+/* Oval Buttons */
+.navbar a {
+  text-decoration: none;
+  color: #444;
+  font-weight: 600;
+  padding: 10px 25px;
+  border-radius: 70px;
+  background: linear-gradient(145deg, #fff, #e0e0e0);
+  box-shadow: 3px 3px 8px #ccc, -3px -3px 8px #fff;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Sparkle effect on hover */
+.navbar a::after {
+  content: '✨';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  transform: scale(0);
+}
+.navbar a:hover {
+  background: linear-gradient(145deg, #b5c9ff, #ffffff);
+  color: #333;
+  transform: translateY(-3px);
+}
+.navbar a:hover::after {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/*  Sections */
+section {
+  min-height: 100vh;
+  padding: 20px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Section Colors */
+#home    { background: linear-gradient(135deg, #ffe3f1 0%, #d8faff 100%); }
+#about   { background: linear-gradient(135deg, #fff4e6 0%, #ffe6fa 100%); }
+#brain   { background: linear-gradient(135deg, #e6fff3 0%, #e6f0ff 100%); }
+#portfolio { background: linear-gradient(135deg, #f0e6ff 0%, #e6fcff 100%); }
+#contact { background: linear-gradient(135deg, #fff0f5 0%, #f0fff4 100%); }
+
+/* Cute titles */
+h1 {
+  font-size: 3rem;
+  color: #444;
+  text-shadow: 1px 1px 0px #fff;
+}
+p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 600px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* 🌷 Responsive */
+@media (max-width: 700px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .navbar a {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Rotating Music Disc */
+.music-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.rotating-disc {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff8ff, #c9b6ff, #a7e1ff);
+  border: 3px solid #fff;
+  box-shadow: 0 0 25px rgba(200, 150, 255, 0.6), inset 0 0 15px rgba(255,255,255,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin 8s linear infinite;
+  transition: transform 0.3s ease;
+}
+.rotating-disc:hover {
+  transform: scale(1.05);
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Home Section Layout */
+
+#home {
+  background:
+    /* TOP LAYER: dotted pattern */
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.85) 0px,
+      rgba(255,255,255,0) 10px,
+      rgba(255,255,255,0) 10px,
+      rgba(255,255,255,0) 28px
+    ),
+    
+    /* BOTTOM LAYER: your current gradient */
+    linear-gradient(to bottom, #ffe3f1, #d8faff);
+
+  background-size: 30px 30px, cover;
+  background-repeat: repeat;
+}
+
+
+.hero-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+  padding: 100px 50px;
+  max-width: 700px;
+  max-height: 440px;
+  margin: auto;
+  border: dotted;
+  border-radius: 500px;
+  border-color: #afafc5;
+  border-width: 4px;
+}
+
+/*  Left side */
+.hero-left {
+  flex: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-frame {
+  transform: rotate(-5deg);
+  border-radius: 30px;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.photo-frame:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 0 35px rgba(255, 182, 193, 0.8);
+}
+
+.main-photo {
+  width: 260px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+/* 💫 Right side */
+.hero-right {
+  flex: 1;
+  color: #444;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.hero-name {
+  font-size: 6rem;
+  font-weight: 900;
+  color: #ff70a6;
+  text-shadow: 2px 2px 10px rgba(255, 182, 193, 0.7);
+  letter-spacing: 5px;
+  margin-bottom: 30px;
+  animation: glowpulse 3s infinite ease-in-out;
+}
+
+@keyframes glowpulse {
+  0%, 100% { text-shadow: 0 0 15px rgba(255, 150, 200, 0.5); }
+  50% { text-shadow: 0 0 30px rgba(255, 150, 200, 1); }
+}
+
+/*  Image Grid / Collage */
+.collage-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 120px);
+  grid-gap: 15px;
+}
+
+.collage-grid img {
+  width: 120px;
+  height: 120px;
+  border-radius: 20px;
+  object-fit: cover;
+  transition: 0.4s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.collage-grid img:hover {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 0 20px rgba(255, 150, 200, 0.5);
+}
+
+/*  Responsive tweaks */
+@media (max-width: 900px) {
+  .hero-container {
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 0;
+    padding-top: 0;
+    border: 0;
+  }
+
+  .hero-right {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-name {
+    font-size: 4rem;
+  }
+
+}
+
+
+#about {
+  background:
+    /* TOP LAYER: white diagonal stripes */
+    repeating-linear-gradient(
+        90deg,
+      rgba(255,255,255,1) 0px,
+      rgba(255,255,255,0.5) 10px,
+      rgba(255,255,255,0) 10px,
+      rgba(255,255,255,0) 28px
+    ),
+
+    /* BOTTOM LAYER: your existing gradient */
+    linear-gradient(135deg, #fff4e6 0%, #ffe6fa 100%);
+
+  background-size: cover;
+}
+
+/* Asymmetrical Grid Styles for #about */
+.about-grid {
+  display: grid;
+  /* Define two columns: one flexible (1fr) and one slightly larger (1.2fr) */
+  grid-template-columns: 1fr 1.2fr; 
+  gap: 20px;
+  margin-top: 0px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-card {
+  background-color: whitesmoke;
+  padding: 20px;
+  border-radius: 14px;
+  /* Reduced shadow on normal state for cleaner look */
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.08); 
+  transition: box-shadow 0.3s ease; /* Only transitioning shadow */
+  border: 1px solid #ffcfdf;
+  text-align: left;
+  height: 100px;
+}
+
+.about-card:hover {
+  /* Removed lifting (transform: translateY) */
+  /* Centered glow effect */
+  box-shadow: 0 0 20px rgba(255, 150, 200, 0.9), 0 0 5px rgba(255, 150, 200, 0.5);
+}
+
+/* Asymmetry by default */
+.about-card h4 {
+  color: #ff70a6;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.about-card p {
+  text-align: left;
+  max-width: 100%;
+  font-size: 1rem;
+}
+
+/* Specific Asymmetrical Layout Adjustments */
+
+/* Card 1: Spans two rows (NOW STRAIGHT) */
+.card-tall {
+  grid-row: span 2;
+  max-height: 550px;
+}
+
+/* Card 4: Starts in the first column, keeps vertical offset (NOW STRAIGHT) */
+.card-left {
+  grid-column: 1 / 2;
+  /* Removed rotation, kept Y offset to maintain stack asymmetry */
+  transform: translateY(10px); 
+}
+
+/* Responsive adjustment for small screens */
+@media (max-width: 700px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .card-tall, .card-left {
+    grid-column: auto;
+    grid-row: auto;
+    transform: none;
+  }
+}
+
+/* --- #CONTACT STYLES --- */
+
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  padding: 40px 20px;
+  max-width: 1100px;
+  width: 90%;
+}
+
+/* Central "Wave" Title */
+.contact-wave {
+  font-family: "Pacifico", cursive;
+  font-size: 5rem;
+  color: #ff99c8;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: floatwave 4s ease-in-out infinite;
+}
+
+@keyframes floatwave {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Grid for the three contact cards */
+.contact-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Allows wrapping on small screens */
+  gap: 40px;
+}
+
+.contact-bubble {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(.2,.9,.3,1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+/* Individual Bubble Styling (Unique Colors & Faster Animations) */
+
+.bubble-github {
+  background: linear-gradient(135deg, #a7e1ff, #d8faff);
+  /* Faster animation: 2s duration */
+  animation: float 2s ease-in-out infinite 0.2s; 
+}
+
+.bubble-linkedin {
+  background: linear-gradient(135deg, #ffc5e8, #ffd1fc);
+  /* Faster animation: 2.5s duration */
+  animation: float 2.5s ease-in-out infinite 0.4s; 
+}
+
+.bubble-email {
+  background: linear-gradient(135deg, #ecef9d, #ffeb9b);
+  /* Faster animation: 1.8s duration */
+  animation: float 1.8s ease-in-out infinite 0.6s; 
+}
+
+.contact-bubble a {
+  text-decoration: none;
+  color: #444;
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-top: 10px;
+  position: relative;
+  z-index: 3;
+}
+
+.bubble-icon {
+  font-size: 3rem;
+  color: #ff70a6;
+}
+
+/* Overriding the default 'float' keyframes for the bubbles to have a smaller vertical movement */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@media (max-width: 600px) {
+  .contact-wave {
+    font-size: 3.5rem;
+  }
+}
+
+/* 🌸 Flip Card */
+.flip-card {
+  width: 260px;
+  height: 320px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front + Back */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+/* Back side rotate */
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+
+#brain {
+  background:
+
+    radial-gradient(circle, rgba(116, 116, 116, 0.5) 2px, transparent 2px),
+    
+
+   linear-gradient(135deg, #e6fff3 0%, #e6f0ff 100%);
+     
+  background-size: 30px 30px, cover;
+  background-repeat: repeat;
+}
+/* OUTER CONTAINER — same style as home hero */
+.brain-big-container {
+  width: 85%;
+  margin: 40px auto;
+  background-color: whitesmoke;
+  border-radius: 45px;
+  padding: 40px;
+  border: 4px dotted #afafc5;
+  opacity: 1; /* full opacity */
+  max-width: 1000px;
+}
+
+/* 2-COLUMN GRID INSIDE */
+.brain-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  
+}
+
+/* INNER CARDS */
+.brain-card {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  padding: 25px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 15px rgba(203, 214, 236, 0.905);
+  transition: 0.3s;
+  text-align: center;
+  
+}
+
+.brain-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px white;
+}
+
+/* Pacifico headings */
+.brain-card h3 {
+  font-family: "Pacifico", cursive;
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: whitesmoke;
+  
+}
+
+.brain-card p {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.4;
+  
+}
+
+@media (max-width: 800px) {
+  .brain-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* same style as your other containers */
+#portfolio .portfolio-container {
+    background: #ffffff;
+    border: 3px dotted #ccc;
+    border-radius: 20px;
+    padding: 25px;
+    margin: 30px auto;
+    max-width: 900px;
+    display: grid;
+    gap: 20px;
+    opacity: 1;
+}
+
+/* cards inside */
+#portfolio .portfolio-card {
+    background: #fafafa;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #e3e3e3;
+}
+
+/* top thin card */
+#portfolio .small-card {
+    min-height: 80px;      /* SUPER THIN */
+}
+
+/* bottom large card */
+#portfolio .large-card {
+    min-height: 250px;     /* MUCH BIGGER */
+}
+
+#portfolio {
+  background:
+    /* TOP LAYER: white diagonal stripes */
+    repeating-linear-gradient(
+        135deg,
+      rgba(255,255,255,1) 0px,
+      rgba(255,255,255,0.5) 10px,
+      rgba(255,255,255,0) 10px,
+      rgba(255,255,255,0) 28px
+    ),
+    repeating-linear-gradient(
+        45deg,
+      rgba(255,255,255,1) 0px,
+      rgba(255,255,255,0.5) 10px,
+      rgba(255,255,255,0) 10px,
+      rgba(255,255,255,0) 28px
+    ),
+    /* BOTTOM LAYER: your existing gradient */
+    linear-gradient(135deg, #f0e6ff 0%, #e6fcff 100%); 
+
+  background-size: cover;
+}
+
+
+#contact {
+    background:
+        repeating-linear-gradient(
+            45deg,
+            rgba(255,255,255,0.25) 0,
+            rgba(255,255,255,0.25) 2px,
+            transparent 2px,
+            transparent 12px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            rgba(255,255,255,0.25) 0,
+            rgba(255,255,255,0.25) 2px,
+            transparent 2px,
+            transparent 12px
+        ),
+        linear-gradient(to bottom, #ffe3f1, #d8faff);
+}
+
